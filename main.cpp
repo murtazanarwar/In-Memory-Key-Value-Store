@@ -3,11 +3,12 @@
 #include <vector>
 #include <thread>
 #include <cassert>
+using namespace std;
 
 int main() {
     KVStore store;
 
-    std::cout << "Testing basic PUT and GET...\n";
+    cout << "Testing basic PUT and GET...\n";
     store.put("Apple", "A sweet red fruit");
     store.put("Banana", "A sweet yellow fruit");
     
@@ -15,18 +16,18 @@ int main() {
     assert(store.get("Banana").value_or("") == "A sweet yellow fruit");
     assert(!store.get("Carrot").has_value());
     
-    std::cout << "Basic tests passed.\n\n";
+    cout << "Basic tests passed.\n\n";
 
-    std::cout << "Testing concurrent reads and writes...\n";
+    cout << "Testing concurrent reads and writes...\n";
 
-    std::vector<std::thread> threads;
+    vector<thread> threads;
 
     // Writer thread
     threads.emplace_back([&]() {
         store.put("Carrot", "An orange vegetable");
-        std::cout << "Writer thread: Added Carrot.\n";
+        cout << "Writer thread: Added Carrot.\n";
         store.put("Apple", "A crunchy fruit"); // Overwrite
-        std::cout << "Writer thread: Updated Apple.\n";
+        cout << "Writer thread: Updated Apple.\n";
     });
 
     // Reader threads
@@ -36,8 +37,8 @@ int main() {
             auto apple_val = store.get("Apple");
             auto carrot_val = store.get("Carrot");
             
-            std::cout << "Reader " << i << " sees Apple: " << apple_val.value_or("N/A") << "\n";
-            std::cout << "Reader " << i << " sees Carrot: " << carrot_val.value_or("N/A") << "\n";
+            cout << "Reader " << i << " sees Apple: " << apple_val.value_or("N/A") << "\n";
+            cout << "Reader " << i << " sees Carrot: " << carrot_val.value_or("N/A") << "\n";
         });
     }
 
@@ -45,13 +46,13 @@ int main() {
         t.join();
     }
     
-    std::cout << "\nConcurrency test finished.\n";
+    cout << "\nConcurrency test finished.\n";
     
-    std::cout << "Final value of Apple: " << store.get("Apple").value() << std::endl;
+    cout << "Final value of Apple: " << store.get("Apple").value() << endl;
     assert(store.get("Apple").value() == "A crunchy fruit");
     assert(store.get("Carrot").has_value());
     
-    std::cout << "All tests passed!\n";
+    cout << "All tests passed!\n";
 
     return 0;
 }
