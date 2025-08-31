@@ -96,4 +96,4 @@ This project uses CMake, which makes it easy to build on any platform.
 
     ```sh
     ./kv_app
-    ```"# In-Memory-Key-Value-Store" 
+    ``
