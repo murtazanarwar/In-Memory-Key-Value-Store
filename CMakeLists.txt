@@ -13,6 +13,7 @@ add_executable(
     kv_app
     main.cpp
     trie.cpp
+    kv_store.cpp
 )
 
 # Link necessary libraries, std::thread might require pthread

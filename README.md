@@ -42,12 +42,11 @@ This project is an excellent showcase of the following skills:
 The codebase is organized to be modular and easy to understand.
 
 ```
-./code
-    ├── CMakeLists.txt      # The build script for CMake
-    ├── main.cpp            # Example usage and multi-threading demonstration
-    ├── kv_store.hpp        # Header for the public-facing thread-safe KVStore class
-    ├── trie.hpp            # Header for the core Trie data structure
-    └── trie.cpp            # Implementation of the Trie logic
+├── CMakeLists.txt      # The build script for CMake
+├── main.cpp            # Example usage and multi-threading demonstration
+├── kv_store.hpp        # Header for the public-facing thread-safe KVStore class
+├── trie.hpp            # Header for the core Trie data structure
+└── trie.cpp            # Implementation of the Trie logic
 ```
 
 -----

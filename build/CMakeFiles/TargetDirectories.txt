@@ -1,0 +1,3 @@
+C:/Web-Development/projects/In-Memory-Key-Value-Storage/build/CMakeFiles/kv_app.dir
+C:/Web-Development/projects/In-Memory-Key-Value-Storage/build/CMakeFiles/edit_cache.dir
+C:/Web-Development/projects/In-Memory-Key-Value-Storage/build/CMakeFiles/rebuild_cache.dir

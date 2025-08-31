@@ -1,0 +1,20 @@
+[
+{
+  "directory": "C:/Web-Development/projects/In-Memory-Key-Value-Storage/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe   -g -std=gnu++17 -o CMakeFiles\\kv_app.dir\\main.cpp.obj -c C:\\Web-Development\\projects\\In-Memory-Key-Value-Storage\\main.cpp",
+  "file": "C:/Web-Development/projects/In-Memory-Key-Value-Storage/main.cpp",
+  "output": "CMakeFiles/kv_app.dir/main.cpp.obj"
+},
+{
+  "directory": "C:/Web-Development/projects/In-Memory-Key-Value-Storage/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe   -g -std=gnu++17 -o CMakeFiles\\kv_app.dir\\trie.cpp.obj -c C:\\Web-Development\\projects\\In-Memory-Key-Value-Storage\\trie.cpp",
+  "file": "C:/Web-Development/projects/In-Memory-Key-Value-Storage/trie.cpp",
+  "output": "CMakeFiles/kv_app.dir/trie.cpp.obj"
+},
+{
+  "directory": "C:/Web-Development/projects/In-Memory-Key-Value-Storage/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe   -g -std=gnu++17 -o CMakeFiles\\kv_app.dir\\kv_store.cpp.obj -c C:\\Web-Development\\projects\\In-Memory-Key-Value-Storage\\kv_store.cpp",
+  "file": "C:/Web-Development/projects/In-Memory-Key-Value-Storage/kv_store.cpp",
+  "output": "CMakeFiles/kv_app.dir/kv_store.cpp.obj"
+}
+]
