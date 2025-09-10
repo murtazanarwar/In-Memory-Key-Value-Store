@@ -1,10 +1,12 @@
 #pragma once
 
 #include "trie.hpp"
+#include "store_observer.hpp"
 #include <string>
 #include <string_view>
 #include <shared_mutex>
 #include <optional>
+#include <vector> //to hold observers
 using namespace std;
 
 //string_view:
@@ -35,28 +37,119 @@ public:
     // Deletes the Nth key-value pair lexicographically.
     bool del(size_t n);
 
+    // Attaches an observer to listen for store events.
+    void attach(StoreObserver* observer);
+
 private:
+    // Notifies all attached observers of an event.
+    void notify(EventType type, string_view key);
+
     Trie trie_;
 
     // A reader-writer lock for high concurrency on reads
     mutable shared_mutex mutex_; 
 
+    // A list of pointers to observers. We use base class pointers
+    // to hold any object of a derived observer type (polymorphism).
+    vector<StoreObserver*> observers_;
+
 };
 
-//OOPs Concept:
+/*
+==================================================
+                OOPs Concepts
+==================================================
 
-//1.//Abstraction(WHAT): its about hiding complex reality while exposing only the essential parts.
-    //i.   Public Section of KVStore CLass -> This is the abstraction. 
-    //ii.  From the outside world (like main.cpp), the KVStore object is a simple thing
-    //     that can only do a few things: put, get, and del. 
-    //iii. A user of your class doesn't need to know how you store the data. 
-    //     Is it in a tree? A hash map? A simple list? They don't care, and they don't need to.
-    //     The complexity is hidden.
-//2.//Encapsulation(HOW): its the mechanism for achieving abstraction. 
-    //i.  It bundles the data (attributes) and the methods that operate on that data together,
-    //    and restricts access to the internals. This is what creates the "black box."
-    //ii. Private Section of KVStore CLass: This contains the complex Trie data structure and the shared_mutex for concurrency. 
-    //    The public methods are the only things that can interact with these components. 
-    //    This strict boundary is encapsulation
-    //iii.Encapsulation prevents any programmer from accidentally forgetting to use the lock or trying to access the trie through a "back door." 
-    //    The only door is the public interface, and that door has a guard (the mutex).
+OOP has 4 major pillars: Abstraction, Encapsulation, Inheritance, and Polymorphism.
+
+--------------------------------------------------
+1. Abstraction (WHAT)
+--------------------------------------------------
+- Definition:
+    Hiding complex implementation details and exposing
+    only the essential features to the user.
+- Goal:
+    Show "what" an object does, not "how" it does it.
+- Example (KVStore):
+    i.   Public interface: put(), get(), del().
+    ii.  From main.cpp, KVStore looks simple.
+    iii. User does not know/care if data is stored in a
+         Trie, HashMap, or List.
+- Analogy:
+    TV remote → You press a button to change channels,
+    but you don’t know the internal circuit.
+
+--------------------------------------------------
+2. Encapsulation (HOW)
+--------------------------------------------------
+- Definition:
+    Mechanism of bundling data (variables) and methods
+    (functions) together into a single unit (class).
+    It also restricts direct access to internal data.
+- Goal:
+    Protect data, enforce controlled access.
+- Example (KVStore):
+    i.   Private section: Trie + shared_mutex.
+    ii.  Only public functions (put/get/del) can touch
+         these internals.
+    iii. Ensures users cannot bypass locks or corrupt
+         data → a strict boundary ("black box").
+- Analogy:
+    Capsule medicine → multiple ingredients sealed in 
+    one unit, safe for use.
+
+--------------------------------------------------
+3. Inheritance (IS-A relationship)
+--------------------------------------------------
+- Definition:
+    Process of creating a new class (derived) from an
+    existing one (base), reusing and extending code.
+- Goal:
+    Code reusability, hierarchical relationships.
+- Types in C++:
+    * Single
+    * Multiple
+    * Multilevel
+    * Hierarchical
+    * Hybrid
+- Example:
+    class Vehicle { };
+    class Car : public Vehicle { };
+    --> Car "is-a" Vehicle.
+- Analogy:
+    Child inherits traits from parent.
+
+--------------------------------------------------
+4. Polymorphism (MANY FORMS)
+--------------------------------------------------
+- Definition:
+    Ability of functions or objects to take multiple
+    forms depending on context.
+- Types:
+    A) Compile-time (Static)
+       * Function overloading
+       * Operator overloading
+    B) Run-time (Dynamic)
+       * Virtual functions (via vtable)
+- Example:
+    class Animal { virtual void sound(); };
+    class Dog : public Animal { void sound() override; };
+    Animal* a = new Dog();
+    a->sound();  // "Woof!" (runtime decision)
+- Key Note:
+    Always make base destructor `virtual` if using
+    polymorphism.
+- Analogy:
+    The "+" symbol → adds ints, concatenates strings,
+    works differently in each context.
+
+--------------------------------------------------
+QUICK SUMMARY (Interview-ready one-liners):
+--------------------------------------------------
+- Abstraction → Hides implementation, shows essentials.
+- Encapsulation → Hides data, enforces boundaries.
+- Inheritance → Reuse + "is-a" relationship.
+- Polymorphism → Same interface, different behavior.
+
+==================================================
+*/

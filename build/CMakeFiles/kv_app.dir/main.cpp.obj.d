@@ -143,6 +143,7 @@ CMakeFiles/kv_app.dir/main.cpp.obj: \
  C:/msys64/ucrt64/include/c++/15.2.0/bits/vector.tcc \
  C:/msys64/ucrt64/include/c++/15.2.0/optional \
  C:/msys64/ucrt64/include/c++/15.2.0/bits/enable_special_members.h \
+ C:\Web-Development\projects\In-Memory-Key-Value-Storage\store_observer.hpp \
  C:/msys64/ucrt64/include/c++/15.2.0/shared_mutex \
  C:/msys64/ucrt64/include/c++/15.2.0/bits/chrono.h \
  C:/msys64/ucrt64/include/c++/15.2.0/ratio \
@@ -181,4 +182,9 @@ CMakeFiles/kv_app.dir/main.cpp.obj: \
  C:/msys64/ucrt64/include/c++/15.2.0/bits/std_thread.h \
  C:/msys64/ucrt64/include/c++/15.2.0/bits/this_thread_sleep.h \
  C:/msys64/ucrt64/include/c++/15.2.0/cassert \
- C:/msys64/ucrt64/include/assert.h
+ C:/msys64/ucrt64/include/assert.h \
+ C:/msys64/ucrt64/include/c++/15.2.0/fstream \
+ C:/msys64/ucrt64/include/c++/15.2.0/bits/codecvt.h \
+ C:/msys64/ucrt64/include/c++/15.2.0/x86_64-w64-mingw32/bits/basic_file.h \
+ C:/msys64/ucrt64/include/c++/15.2.0/x86_64-w64-mingw32/bits/c++io.h \
+ C:/msys64/ucrt64/include/c++/15.2.0/bits/fstream.tcc

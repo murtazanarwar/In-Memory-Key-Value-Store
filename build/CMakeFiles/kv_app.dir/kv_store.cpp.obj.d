@@ -143,6 +143,7 @@ CMakeFiles/kv_app.dir/kv_store.cpp.obj: \
  C:/msys64/ucrt64/include/c++/15.2.0/bits/vector.tcc \
  C:/msys64/ucrt64/include/c++/15.2.0/optional \
  C:/msys64/ucrt64/include/c++/15.2.0/bits/enable_special_members.h \
+ C:\Web-Development\projects\In-Memory-Key-Value-Storage\store_observer.hpp \
  C:/msys64/ucrt64/include/c++/15.2.0/shared_mutex \
  C:/msys64/ucrt64/include/c++/15.2.0/bits/chrono.h \
  C:/msys64/ucrt64/include/c++/15.2.0/ratio \

@@ -1,5 +1,5 @@
 #include "trie.hpp"
-#include <algorithm> // For min
+#include <algorithm>
 using namespace std;
 
 Trie::Trie() : root_(make_unique<TrieNode>("")) {}
